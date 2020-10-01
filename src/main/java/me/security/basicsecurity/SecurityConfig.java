@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -18,6 +19,61 @@ import java.io.IOException;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+
+    /*
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+//        http.sessionManagement() : 세션 관리 기능 작동
+//        .sessionFixation().changeSessionId() // 세션 고정 보호 (사용자의 세션, 쿠키 아이디가 매번 변경되도록 설정을 통해 가능)
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated();
+        http
+                .formLogin();
+
+        http
+                .sessionManagement()
+                .sessionFixation().none();
+
+//        http
+//                .sessionManagement()
+//                .sessionFixation().changeSessionId();
+//
+//        http
+//                .sessionManagement()
+//                .sessionFixation().migrateSession();
+//
+//        http
+//                .sessionManagement()
+//                .sessionFixation().newSession();
+    }
+     */
+
+    /*
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+//        http.sessionManagement() : 세션 관리 기능 작동
+//        http.sessionManagement()
+//                .maximumSession(1) // 최대 허용 가능 세션 수, -1 : 무제한 로그인 세션 허용
+//                .maxSessionPreventsLogin(true) // 동시 로그인 차단, false : 기존 세션 만료(default)
+//                .invalidSessionUrl("/invalid") // 세션이 유효하지 않을 때 이동 할 페이지
+//                .expiredUrl("/expired") // 세션 만료 후 이동할 페이지
+        // .sessionFixation().changeSessionId() // 세션 고정 보호 (사용자의 세션, 쿠키 아이디가 매번 변경되도록 설정을 통해 가)
+
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated();
+        http
+                .formLogin();
+        http
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(false);
+    }
+     */
+
+    /*
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -31,8 +87,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .rememberMe()
                 .userDetailsService(userDetailsService);
+        }
+     */
 
         /*
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
                 .anyRequest()
                 .authenticated();
@@ -55,9 +116,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .deleteCookies("remember-me");
+        }
          */
 
         /*
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .anyRequest().authenticated();
@@ -85,6 +149,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .permitAll(); // "/loginPage" url은 모두 허용
+            }
          */
-    }
+
 }
