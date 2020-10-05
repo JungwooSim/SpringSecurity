@@ -42,3 +42,4 @@ SessionCreationPolicy.If_Required // 스프링 시큐리티가 필요 시 생성
 SessionCreationPolicy.Never // 스프링 시큐리티가 생성하지 않지만 이미 존재하면 사용
 SessionCreationPolicy.Stateless // 스프링 시큐리티가 생성하지 않고 존재해도 사용하지 않음
 ```
+10. 세션 제어 필터 : SessionManagementFilter, ConcurrentSessionFilter

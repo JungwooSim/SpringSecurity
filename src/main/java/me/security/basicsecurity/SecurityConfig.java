@@ -20,7 +20,20 @@ import java.io.IOException;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
+    // 10. 세션 제어 필터 : SessionManagementFilter, ConcurrentSessionFilter
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated();
+        http
+                .formLogin()
+            .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true)
+            ;
+    }
     /*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
