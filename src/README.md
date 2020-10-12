@@ -44,3 +44,4 @@ SessionCreationPolicy.Stateless // 스프링 시큐리티가 생성하지 않고
 ```
 10. 세션 제어 필터 : SessionManagementFilter, ConcurrentSessionFilter
 11. 권한설정과 표현방식
+12. 예외처리 및 요청 캐시 필터 : ExceptionTranslationFilter, RequestCacheAwareFilter
