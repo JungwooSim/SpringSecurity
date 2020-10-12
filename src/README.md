@@ -43,3 +43,4 @@ SessionCreationPolicy.Never // 스프링 시큐리티가 생성하지 않지만 
 SessionCreationPolicy.Stateless // 스프링 시큐리티가 생성하지 않고 존재해도 사용하지 않음
 ```
 10. 세션 제어 필터 : SessionManagementFilter, ConcurrentSessionFilter
+11. 권한설정과 표현방식
