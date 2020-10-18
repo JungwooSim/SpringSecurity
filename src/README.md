@@ -50,3 +50,5 @@ SessionCreationPolicy.Stateless // 스프링 시큐리티가 생성하지 않고
 ### 스프링 시큐리티 주요 아키텍처 이해
 1. 위임 필터 및 필터 빈 초기화 - DelegatingProxyChain, FilterChainProxy
 2. 필터 초기화와 다중 보안 설정
+3. 인증 개념 이해 - Authentication
+4. 인증 저장소 - SecurityContextHolder, SecurityContext

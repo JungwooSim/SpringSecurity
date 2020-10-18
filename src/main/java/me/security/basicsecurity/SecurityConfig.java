@@ -27,6 +27,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated();
+
+        http
+                .formLogin();
+
+
+    }
+}
+/*
 // 2.1 필처 초기화와 다중 보안 설정
 @Configuration
 @EnableWebSecurity
@@ -56,6 +72,7 @@ class SecurityConfig2 extends WebSecurityConfigurerAdapter {
                 .formLogin();
     }
 }
+*/
 //@Configuration
 //@EnableWebSecurity
 //public class SecurityConfig extends WebSecurityConfigurerAdapter {
