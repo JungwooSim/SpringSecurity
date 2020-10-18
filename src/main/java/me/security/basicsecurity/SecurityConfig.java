@@ -2,6 +2,7 @@ package me.security.basicsecurity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,10 +27,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// 2.1 필처 초기화와 다중 보안 설정
 @Configuration
 @EnableWebSecurity
+@Order(0)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .antMatcher("/admin/**")
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+    }
+}
 
+@Configuration
+@Order(1)
+class SecurityConfig2 extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().permitAll()
+                .and()
+                .formLogin();
+    }
+}
+//@Configuration
+//@EnableWebSecurity
+//public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    /*
     // 11. 권한설정과 표현방식
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -77,7 +108,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 }) // 인가 에러 발생했을시
         ;
     }
-
+    */
     /*
     // 10. 세션 제어 필터 : SessionManagementFilter, ConcurrentSessionFilter
     @Override
@@ -225,5 +256,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll(); // "/loginPage" url은 모두 허용
             }
          */
-
-}
+//}

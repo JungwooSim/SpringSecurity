@@ -45,3 +45,8 @@ SessionCreationPolicy.Stateless // 스프링 시큐리티가 생성하지 않고
 10. 세션 제어 필터 : SessionManagementFilter, ConcurrentSessionFilter
 11. 권한설정과 표현방식
 12. 예외처리 및 요청 캐시 필터 : ExceptionTranslationFilter, RequestCacheAwareFilter
+13. 사이트 간 요청 위조 : CSRF, CsrfFilter 
+
+### 스프링 시큐리티 주요 아키텍처 이해
+1. 위임 필터 및 필터 빈 초기화 - DelegatingProxyChain, FilterChainProxy
+2. 필터 초기화와 다중 보안 설정
