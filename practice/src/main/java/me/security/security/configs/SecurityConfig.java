@@ -37,16 +37,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations()); // 정적인 파일은 시큐리티가 검증할 필요 없도록
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable().headers().frameOptions().disable()
+        .and()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/", "/users","/h2-console/**").permitAll()
                 .antMatchers("/mypage").hasRole("USER") // mypage에 접근 가능한 Role 은 USER
                 .antMatchers("/messages").hasRole("MANAGER")
                 .antMatchers("/config").hasRole("ADMIN")
                 .anyRequest().authenticated()
         .and()
-                .formLogin();
+                .formLogin()
+        ;
     }
 }
