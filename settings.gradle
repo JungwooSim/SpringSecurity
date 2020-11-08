@@ -1,1 +1,5 @@
-rootProject.name = 'basicsecurity'
+rootProject.name = 'basicserity'
+
+include 'practice'
+include 'basicserity'
+
