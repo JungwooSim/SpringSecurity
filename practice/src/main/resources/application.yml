@@ -1,0 +1,11 @@
+#spring:
+#    datasource:
+#    url: jdbc:mysql://localhost:3306/spring_security_study?characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+#    username: big
+#    password: big
+#  jpa:
+#    hibernate:
+#      show_sql: true
+#      ddl-auto: update
+#      format_sql: true
+#      use-new_generator_mappings: true

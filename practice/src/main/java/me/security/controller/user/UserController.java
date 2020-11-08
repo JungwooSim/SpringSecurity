@@ -43,7 +43,6 @@ public class UserController {
 //    @AuthenticationPrincipal Account account, Authentication authentication, Principal principal
     @GetMapping(value="/mypage")
     public String myPage() {
-        System.out.println("okok");
         return "user/mypage";
     }
 
